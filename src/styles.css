@@ -1,31 +1,225 @@
-:root { color: #26324a; background: #fef7e8; font-family: Inter, system-ui, sans-serif; }
+:root {
+  color: #26324a;
+  background: #fef7e8;
+  font-family: Inter, system-ui, sans-serif;
+}
+
 * { box-sizing: border-box; }
+html { min-height: 100%; }
 body { margin: 0; min-height: 100vh; overflow-x: hidden; }
 main { min-height: 100vh; position: relative; }
-.hero { min-height: 100vh; display: grid; place-items: center; padding: 2rem; background: radial-gradient(circle at 20% 20%, #fff7c8 0 18%, transparent 30%), linear-gradient(135deg, #b8e8ff 0%, #fce7f3 45%, #fff2bd 100%); position: relative; overflow: hidden; }
-.card { width: min(760px, 94vw); padding: clamp(2rem, 6vw, 4.5rem); border-radius: 38px; background: rgba(255,255,255,.78); box-shadow: 0 30px 80px rgba(67, 89, 135, .25); backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.85); text-align: center; position: relative; z-index: 2; }
-.badge { display: inline-flex; align-items: center; gap: .5rem; padding: .65rem 1rem; border-radius: 999px; background: #fff3bf; color: #7a5410; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; font-size: .76rem; }
-h1 { font-family: Pacifico, cursive; font-size: clamp(3rem, 9vw, 6.8rem); line-height: 1; margin: 1.1rem 0; color: #ff6b6b; text-shadow: 0 5px 0 #fff; }
-.lead { font-size: clamp(1.1rem, 2.4vw, 1.45rem); line-height: 1.7; margin: 0 auto 2rem; max-width: 620px; color: #3b4868; }
-.wish-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 2rem 0; }
-.wish-grid div { min-height: 145px; padding: 1.2rem; border-radius: 24px; background: linear-gradient(180deg, #fff, #fff8dd); display: grid; place-items: center; gap: .7rem; font-weight: 700; box-shadow: inset 0 0 0 1px rgba(255,255,255,.8); }
-.wish-grid svg { color: #ff9f1c; width: 30px; height: 30px; }
-.signature { font-size: 1.2rem; font-weight: 800; color: #536dfe; margin-bottom: 0; }
-.entrance { position: fixed; inset: 0; z-index: 10; overflow: hidden; display: grid; place-items: center; background: linear-gradient(#9be7ff, #d7f3ff 55%, #fff6d9); transition: opacity .8s ease, visibility .8s ease; }
+
+.hero {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: clamp(1rem, 4vw, 2rem);
+  background: radial-gradient(circle at 20% 20%, #fff7c8 0 18%, transparent 30%), linear-gradient(135deg, #b8e8ff 0%, #fce7f3 45%, #fff2bd 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.card {
+  width: min(760px, 94vw);
+  padding: clamp(1.35rem, 5vw, 4.5rem);
+  border-radius: clamp(24px, 6vw, 38px);
+  background: rgba(255, 255, 255, .78);
+  box-shadow: 0 30px 80px rgba(67, 89, 135, .25);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, .85);
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .65rem 1rem;
+  border-radius: 999px;
+  background: #fff3bf;
+  color: #7a5410;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-size: .76rem;
+}
+
+h1 {
+  font-family: Pacifico, cursive;
+  font-size: clamp(2.75rem, 10vw, 6.8rem);
+  line-height: .98;
+  margin: 1.1rem 0;
+  color: #ff6b6b;
+  text-shadow: 0 5px 0 #fff;
+}
+
+.lead {
+  font-size: clamp(1rem, 2.4vw, 1.45rem);
+  line-height: 1.65;
+  margin: 0 auto 2rem;
+  max-width: 620px;
+  color: #3b4868;
+}
+
+.wish-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.wish-grid div {
+  min-height: 145px;
+  padding: 1.2rem;
+  border-radius: 24px;
+  background: linear-gradient(180deg, #fff, #fff8dd);
+  display: grid;
+  place-items: center;
+  gap: .7rem;
+  font-weight: 700;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .8);
+}
+
+.icon { color: #ff9f1c; font-size: 2rem; line-height: 1; }
+.signature { font-size: clamp(1rem, 3.5vw, 1.2rem); font-weight: 800; color: #536dfe; margin-bottom: 0; }
+
+.entrance {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(#9be7ff, #d7f3ff 55%, #fff6d9);
+  transition: opacity .8s ease, visibility .8s ease;
+}
+
 .entrance.delivered { opacity: 0; visibility: hidden; pointer-events: none; }
-.airplane-wrap { position: absolute; left: 0; top: 26%; filter: drop-shadow(0 16px 18px rgba(47,78,122,.22)); }
-.plane-icon { width: clamp(90px, 14vw, 170px); height: clamp(90px, 14vw, 170px); color: white; fill: white; }
-.trail { position: absolute; right: 78%; top: 54%; display: flex; gap: 12px; transform: rotate(7deg); }
-.trail span { width: 58px; height: 4px; border-radius: 99px; background: rgba(255,255,255,.75); animation: trail 1s infinite ease-in-out; }
-.trail span:nth-child(2) { width: 38px; animation-delay: .16s; } .trail span:nth-child(3) { width: 22px; animation-delay: .32s; }
-.delivery-note { position: absolute; bottom: 18%; padding: 1.2rem 1.6rem; border-radius: 24px; background: rgba(255,255,255,.86); box-shadow: 0 20px 50px rgba(67, 89, 135, .2); text-align: center; }
-.delivery-note span { display: block; color: #536dfe; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; font-size: .75rem; }
-.delivery-note strong { display: block; margin-top: .35rem; font-size: clamp(1.5rem, 4vw, 2.4rem); color: #ff6b6b; }
-.cloud { position: absolute; width: 220px; height: 70px; border-radius: 999px; background: rgba(255,255,255,.65); filter: blur(.2px); }
-.cloud::before, .cloud::after { content: ''; position: absolute; border-radius: 50%; background: inherit; } .cloud::before { width: 90px; height: 90px; left: 30px; top: -38px; } .cloud::after { width: 120px; height: 120px; right: 22px; top: -58px; }
-.cloud-one { top: 15%; left: 8%; animation: float 7s ease-in-out infinite; } .cloud-two { right: 7%; top: 32%; transform: scale(.75); animation: float 8s ease-in-out infinite reverse; }
-.confetti i { position: absolute; left: var(--left); top: -20px; width: 10px; height: 18px; border-radius: 4px; background: hsl(calc(var(--left) * 3.6), 90%, 62%); animation: confetti 5.5s var(--delay) linear infinite; opacity: .75; }
+
+.airplane-wrap {
+  position: absolute;
+  left: 0;
+  top: 24%;
+  width: clamp(96px, 14vw, 170px);
+  height: clamp(96px, 14vw, 170px);
+  filter: drop-shadow(0 16px 18px rgba(47, 78, 122, .22));
+  animation: airplane-flight 4.8s cubic-bezier(.42, 0, .28, 1) forwards;
+  transform-origin: 65% 50%;
+}
+
+.plane-icon {
+  width: 100%;
+  height: 100%;
+  color: white;
+  fill: white;
+  stroke: #6c8dc9;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  stroke-width: 3;
+}
+
+.trail {
+  position: absolute;
+  right: 78%;
+  top: 54%;
+  display: flex;
+  gap: 12px;
+  transform: rotate(7deg);
+}
+
+.trail span {
+  width: 58px;
+  height: 4px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, .75);
+  animation: trail 1s infinite ease-in-out;
+}
+
+.trail span:nth-child(2) { width: 38px; animation-delay: .16s; }
+.trail span:nth-child(3) { width: 22px; animation-delay: .32s; }
+
+.delivery-note {
+  position: absolute;
+  bottom: 18%;
+  width: min(90vw, 520px);
+  padding: 1.2rem 1.6rem;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, .86);
+  box-shadow: 0 20px 50px rgba(67, 89, 135, .2);
+  text-align: center;
+  animation: note-arrival .8s 3.1s ease-out both;
+}
+
+.delivery-note span {
+  display: block;
+  color: #536dfe;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-size: .75rem;
+}
+
+.delivery-note strong {
+  display: block;
+  margin-top: .35rem;
+  font-size: clamp(1.35rem, 5vw, 2.4rem);
+  color: #ff6b6b;
+}
+
+.cloud { position: absolute; width: 220px; height: 70px; border-radius: 999px; background: rgba(255, 255, 255, .65); filter: blur(.2px); }
+.cloud::before, .cloud::after { content: ''; position: absolute; border-radius: 50%; background: inherit; }
+.cloud::before { width: 90px; height: 90px; left: 30px; top: -38px; }
+.cloud::after { width: 120px; height: 120px; right: 22px; top: -58px; }
+.cloud-one { top: 15%; left: 8%; animation: float 7s ease-in-out infinite; }
+.cloud-two { right: 7%; top: 32%; transform: scale(.75); animation: float 8s ease-in-out infinite reverse; }
+
+.confetti i {
+  position: absolute;
+  left: var(--left);
+  top: -20px;
+  width: 10px;
+  height: 18px;
+  border-radius: 4px;
+  background: hsl(var(--hue), 90%, 62%);
+  animation: confetti 5.5s var(--delay) linear infinite;
+  opacity: .75;
+}
+
+@keyframes airplane-flight {
+  0% { transform: translate3d(-35vw, 18svh, 0) rotate(-8deg) scale(.85); }
+  20% { transform: translate3d(8vw, 5svh, 0) rotate(10deg) scale(1); }
+  48% { transform: translate3d(38vw, 22svh, 0) rotate(-5deg) scale(1.08); }
+  72% { transform: translate3d(68vw, 8svh, 0) rotate(12deg) scale(.96); }
+  100% { transform: translate3d(108vw, 28svh, 0) rotate(18deg) scale(.72); }
+}
+
+@keyframes note-arrival { from { opacity: 0; transform: translateY(22px) scale(.96); } to { opacity: 1; transform: translateY(0) scale(1); } }
 @keyframes trail { 50% { opacity: .35; transform: translateX(-10px); } }
 @keyframes float { 50% { transform: translateY(-18px); } }
-@keyframes confetti { to { transform: translateY(110vh) rotate(540deg); } }
-@media (max-width: 720px) { .wish-grid { grid-template-columns: 1fr; } .card { border-radius: 28px; } }
+@keyframes confetti { to { transform: translateY(110svh) rotate(540deg); } }
+
+@media (max-width: 720px) {
+  .hero { align-items: start; padding: 1rem; padding-top: max(1rem, env(safe-area-inset-top)); }
+  .card { width: min(100%, 430px); margin-top: 1rem; box-shadow: 0 18px 45px rgba(67, 89, 135, .2); }
+  .badge { font-size: .66rem; padding: .55rem .8rem; }
+  .lead { margin-bottom: 1.2rem; }
+  .wish-grid { grid-template-columns: 1fr; gap: .7rem; margin: 1.2rem 0; }
+  .wish-grid div { min-height: auto; grid-template-columns: auto 1fr; text-align: left; padding: .9rem 1rem; }
+  .icon { font-size: 1.45rem; }
+  .airplane-wrap { top: 20%; width: clamp(82px, 26vw, 118px); height: clamp(82px, 26vw, 118px); }
+  .trail { gap: 7px; }
+  .trail span { width: 34px; height: 3px; }
+  .trail span:nth-child(2) { width: 24px; }
+  .trail span:nth-child(3) { width: 16px; }
+  .cloud { transform: scale(.72); }
+  .cloud-one { left: -12%; }
+  .cloud-two { right: -18%; top: 38%; }
+  .delivery-note { bottom: 14%; padding: 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .airplane-wrap, .trail span, .cloud-one, .cloud-two, .confetti i, .delivery-note { animation-duration: .01ms; animation-iteration-count: 1; }
+  .entrance { transition-duration: .01ms; }
+}
